@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans: "Outfit", "Segoe UI", sans-serif;
+  --color-cream: #f4efe8;
+  --color-ink: #1c1917;
+  --color-forest: #1b3a32;
+  --color-moss: #3f6f5b;
+  --color-rose: #a84556;
+  --color-blush: #f3d4d6;
+  --color-gold: #c4a36a;
+  --color-sand: #ebe3d8;
+  --color-paper: #fffcf8;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+
+::selection {
+  background: #1b3a32;
+  color: #f4efe8;
+}
+
+img {
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+.field {
+  width: 100%;
+  border: 1px solid rgb(27 58 50 / 0.16);
+  background: #fffcf8;
+  padding: 0.9rem 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.field:focus {
+  border-color: #1b3a32;
+  box-shadow: 0 0 0 3px rgb(27 58 50 / 0.12);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem 1.35rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.btn-dark {
+  background: #1b3a32;
+  color: #f4efe8;
+}
+
+.btn-dark:hover {
+  background: #132923;
+}
+
+.btn-rose {
+  background: #a84556;
+  color: #fff;
+}
+
+.btn-rose:hover {
+  background: #8f3848;
+}
+
+.btn-line {
+  background: transparent;
+  color: #1b3a32;
+  border: 1px solid rgb(27 58 50 / 0.35);
+}
+
+.btn-line:hover {
+  background: #1b3a32;
+  color: #f4efe8;
+}
+
+.marquee-track {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, -12vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translate3d(40px, 105vh, 0) rotate(220deg);
+    opacity: 0;
+  }
+}
+
+.petal {
+  position: absolute;
+  top: 0;
+  width: 14px;
+  height: 18px;
+  border-radius: 70% 10% 70% 10%;
+  background: #f3d4d6;
+  opacity: 0;
+  animation: drift linear infinite;
+  pointer-events: none;
+}
+
+.kenburns {
+  animation: ken 22s ease-in-out infinite alternate;
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .petal,
+  .kenburns {
+    animation: none !important;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
